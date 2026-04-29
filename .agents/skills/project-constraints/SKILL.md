@@ -14,6 +14,7 @@ This project is intentionally zero-config. These rules are non-negotiable — do
 - A build tool (Webpack, Vite, Parcel, Gulp, etc.)
 - A compile or transpile step of any kind
 - Any backend framework or runtime server
+- `replit.md` — do not create this file under any circumstances; it is absolutely not needed for this project
 
 ## How it works
 
