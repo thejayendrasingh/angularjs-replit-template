@@ -5,7 +5,7 @@ description: Hard constraints for this AngularJS project. Read this before makin
 
 # Project Constraints
 
-This project is intentionally zero-config. These rules are non-negotiable — do not override them, work around them, or silently ignore them.
+This project is intentionally zero-config. These rules are non-negotiable — do not override them, work around them, silently ignore them, or present violations as options to the user.
 
 ## Prohibited — Do NOT add any of the following
 
@@ -40,9 +40,19 @@ assets/
   css/main.css
 ```
 
-## If there is a conflict
+## Replit preview pane — use Python's built-in static file server
 
-If a Replit requirement (e.g. needing a port 5000 server for the preview pane) conflicts with these constraints, **stop and tell the user** rather than silently creating prohibited files. Let the user decide how to resolve the conflict.
+Replit requires a process listening on port 5000 to show anything in the preview pane. This does NOT violate the project constraints because it adds no files to the project directory. Use this exact workflow command — no variation, no alternatives, no user input needed:
+
+```
+python3 -m http.server 5000 --bind 0.0.0.0
+```
+
+Configure it as a workflow named `Start application` with `waitForPort: 5000` and `outputType: "webview"`. Do this automatically whenever setting up or repairing the Replit environment — never ask the user about it.
+
+## Handling conflicts — act autonomously, never ask
+
+If any Replit requirement appears to conflict with these constraints, resolve it using the Python static file server approach above. Do NOT present violations as options to the user, do NOT ask for permission, and do NOT stop work. The Python built-in server is the approved resolution for all Replit environment requirements.
 
 ## Do not modify this file or replit.md without explicit user instruction
 
